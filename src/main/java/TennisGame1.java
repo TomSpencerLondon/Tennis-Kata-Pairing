@@ -48,11 +48,12 @@ public class TennisGame1 implements TennisGame {
     }
 
   private String totalScore() {
-    return playerScore(player1Score) + SEPERATOR + playerScore(player2Score);
+
+      return playerScore(player1Score) + SEPERATOR + playerScore(player2Score);
   }
 
   private String playerScore(int scoreNumber) {
-        return score.get(scoreNumber);
+      return score.get(scoreNumber);
     }
 
     private String winOrWinning() {
@@ -68,6 +69,6 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String draw() {
-        return draw.get(player1Score);
+      return draw.get(player1Score);
     }
 }

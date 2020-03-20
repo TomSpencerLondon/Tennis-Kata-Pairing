@@ -10,7 +10,6 @@ import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class TennisTest {
-
     private int player1Score;
     private int player2Score;
     private String expectedScore;
