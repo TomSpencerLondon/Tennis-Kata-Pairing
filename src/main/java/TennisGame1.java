@@ -6,9 +6,9 @@ public class TennisGame1 implements TennisGame {
 
   public void wonPoint(String playerName) {
     if (playerName.equals("player1"))
-      player1Score += 1;
+      player1Score++;
     else
-      player2Score += 1;
+      player2Score++;
   }
 
   public String getScore() {
@@ -20,51 +20,51 @@ public class TennisGame1 implements TennisGame {
       return winOrWinning();
     }
 
-     return playerScore(player1Score) + "-" + playerScore(player2Score);
+    return playerScore(player1Score) + "-" + playerScore(player2Score);
   }
 
   private String playerScore(int score) {
-    switch (score) {
-      case 0:
-        return "Love";
-      case 1:
-        return "Fifteen";
-      case 2:
-        return "Thirty";
-      case 3:
-        return "Forty";
-      default:
-        throw new UnsupportedOperationException();
-    }
+    return Score.values()[score].tennisScore;
   }
 
   private String winOrWinning() {
-    String score;
-    int minusResult = player1Score - player2Score;
-    if (minusResult == 1) score = "Advantage player1";
-    else if (minusResult == -1) score = "Advantage player2";
-    else if (minusResult >= 2) score = "Win for player1";
-    else score = "Win for player2";
-    return score;
+    int scoreDiff = player1Score - player2Score;
+    if (scoreDiff == 1) {
+      return "Advantage player1";
+    } else if (scoreDiff == -1) {
+      return "Advantage player2";
+    } else if (scoreDiff >= 2) {
+      return "Win for player1";
+    }
+    return "Win for player2";
   }
 
   private String draw() {
-    String score;
     switch (player1Score) {
       case 0:
-        score = "Love-All";
-        break;
+        return "Love-All";
       case 1:
-        score = "Fifteen-All";
-        break;
+        return "Fifteen-All";
       case 2:
-        score = "Thirty-All";
-        break;
+        return "Thirty-All";
       default:
-        score = "Deuce";
-        break;
-
+        return "Deuce";
     }
-    return score;
+  }
+
+  private enum Score{
+    ZERO(0, "Love"),
+    ONE(1, "Fifteen"),
+    TWO(2, "Thirty"),
+    THREE(3, "Forty");
+
+
+    private final int score;
+    private final String tennisScore;
+
+    Score(int score, String tennisScore) {
+      this.score = score;
+      this.tennisScore = tennisScore;
+    }
   }
 }
